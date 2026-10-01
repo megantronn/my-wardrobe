@@ -23,7 +23,7 @@ const CONFIG = {
   // Where the silhouette's head/shoulders/waist/ankles are. null = measured from the picture automatically.
   silhouetteMarks: null,
   // Where this site's code is published (the AGPL licence asks for a link to it). "" hides the link.
-  sourceCode: ""
+  sourceCode: "https://github.com/megantronn/my-wardrobe"
 };
 
 /* ======================================================================
