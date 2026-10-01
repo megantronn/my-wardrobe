@@ -1,0 +1,3 @@
+# Store text files with one consistent kind of line ending (LF), whatever computer edits them.
+# Images and other binary files are left untouched.
+* text=auto eol=lf

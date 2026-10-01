@@ -1,0 +1,14 @@
+# Netlify settings. Netlify reads this file every time you push to GitHub.
+# There's nothing to build (the site is plain HTML, CSS and JavaScript),
+# so Netlify just publishes this folder exactly as it is.
+[build]
+  publish = "."
+
+# Two small, standard safety settings for every page.
+# (No "cross-origin isolation" headers: the background remover works fine without them,
+# and they could stop Google Fonts from loading.)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

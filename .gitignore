@@ -1,0 +1,22 @@
+# .gitignore = a list of files and folders git must NEVER save or upload.
+# Anything listed here stays on this computer only. It never goes to GitHub
+# and never goes onto the live website.
+
+# My personal clothing photos (private: some are underwear).
+# The public site starts with an empty closet; everyone adds their own pieces.
+images/clothes/
+
+# Anything I want to keep private in this folder (spare photos, notes, etc.)
+private/
+
+# Closet backup files made with the BACKUP button (they contain photos)
+*.closet
+*backup*.zip
+
+# Settings for the Claude Code helper (not part of the website)
+.claude/
+
+# Junk files Windows and Mac create by themselves
+Thumbs.db
+desktop.ini
+.DS_Store

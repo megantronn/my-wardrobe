@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Wardrobe</title>
+<meta name="description" content="A Y2K wardrobe computer for your own clothes. Your closet stays on your device.">
+<!-- Home screen app: the manifest gives the name and icons phones use for "Add to Home Screen" -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3E0F35">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Wardrobe">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  MY WARDROBE
+  Each person's clothes, photos and saved looks are saved in their own browser (see db.js).
+  Nothing is uploaded: this site is just the "wardrobe computer"; the closet lives on the device.
+  To change the title, season or backup reminder: see SETTINGS at the top of script.js.
+-->
+
+<!-- This box only shows if style.css can't be found (usually because the zip wasn't extracted). -->
+<div class="unzip-warning" style="font:16px/1.5 sans-serif;padding:16px;background:#fff3c2;border:3px solid #d7263d;margin:16px">
+  The page can't find its style.css file. Right-click the zip file, choose <b>Extract All</b>, then open index.html from the extracted folder.
+</div>
+
+<div class="monitor">
+  <div class="screen">
+    <header class="titlebar">
+      <h1 id="title">MY WARDROBE</h1>
+      <div class="season-tag" id="seasonTag">SPRING FASHIONS</div>
+      <div class="clock" id="clock" aria-hidden="true"></div>
+    </header>
+
+    <div class="main">
+      <aside class="side left">
+        <section class="box">
+          <h2>SEASON</h2>
+          <div class="chips" id="seasonChips"></div>
+        </section>
+        <section class="box">
+          <h2>VIEW</h2>
+          <div class="chips" id="viewChips"></div>
+        </section>
+        <section class="box">
+          <h2>CLOSET</h2>
+          <p class="note"><b>YOUR CLOSET.</b> Every piece is photographed and tagged by colour, shape and season.</p>
+          <div class="stats" id="stats"></div>
+          <div class="row closet-btns">
+            <button class="smallbtn pink" type="button" data-act="add">ADD PIECE</button>
+            <button class="smallbtn" type="button" data-act="backup">BACKUP</button>
+            <button class="smallbtn" type="button" data-act="restore">RESTORE</button>
+          </div>
+          <div class="backup-info" id="backupInfo"></div>
+          <p class="note privacy">♥ PHOTOS NEVER LEAVE YOUR DEVICE. <button class="linkbtn" type="button" data-act="safety">KEEP MY CLOSET SAFE?</button></p>
+        </section>
+        <button class="bigbtn" type="button" id="browseBtn" data-act="view" data-arg="browse">BROWSE</button>
+        <button class="bigbtn" type="button" id="autoBtn" data-act="auto">AUTO<br>DRESS</button>
+      </aside>
+
+      <main class="stage" id="stage" aria-live="polite"></main>
+
+      <aside class="side right">
+        <section class="box" id="verdictBox">
+          <h2>COMPUTER SAYS</h2>
+          <div id="verdict"></div>
+        </section>
+        <section class="box">
+          <h2>SAVED LOOKS</h2>
+          <ul class="saved" id="saved"></ul>
+          <div class="row">
+            <button class="smallbtn" type="button" data-act="save">SAVE LOOK</button>
+            <button class="smallbtn" type="button" data-act="lb-plan" title="Save the doll's outfit to your lookbook, to photograph later">TO LOOKBOOK</button>
+          </div>
+        </section>
+        <button class="bigbtn pinkbtn" type="button" data-act="dressme">JUDGE<br>ME</button>
+      </aside>
+    </div>
+
+    <nav class="catbar" id="catbar" aria-label="Categories"></nav>
+  </div>
+  <div class="bezel-foot"><span>WARDROBE·2000</span><a id="sourceLink" href="#" target="_blank" rel="noopener" hidden>SOURCE CODE</a><span class="led">POWER</span></div>
+</div>
+
+<!-- Pop-up box (backups, tips, adding pieces). script.js fills it in. -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <h2><span id="modalTitle"></span><button class="modal-x" type="button" data-act="close" aria-label="Close">✕</button></h2>
+  <div class="modal-body" id="modalBody"></div>
+</dialog>
+
+<!-- Little messages that pop up at the bottom of the screen -->
+<div class="toast" id="toast" role="status"></div>
+
+<!-- Hidden file pickers: RESTORE, ADD PIECE and USE MY PHOTO ("capture" opens the camera on phones) -->
+<input type="file" id="restoreFile" hidden>
+<input type="file" id="photoCamera" accept="image/*" capture="environment" hidden>
+<input type="file" id="photoPick" accept="image/*" hidden>
+<input type="file" id="dollCamera" accept="image/*" capture="environment" hidden>
+<input type="file" id="dollPick" accept="image/*" hidden>
+<input type="file" id="lookCamera" accept="image/*" capture="environment" hidden>
+<input type="file" id="lookPick" accept="image/*" hidden>
+
+<script src="db.js"></script>
+<script src="zip.js"></script>
+<script src="backup.js"></script>
+<script src="photos.js"></script>
+<script src="cutout.js"></script>
+<script src="script.js"></script>
+<script src="doll.js"></script>
+<script src="add-piece.js"></script>
+<script src="lookbook.js"></script>
+</body>
+</html>
