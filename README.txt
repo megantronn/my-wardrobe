@@ -1,8 +1,20 @@
 MY WARDROBE
 
+Live site:   https://clueless-closet-y2k.netlify.app
+Code:        https://github.com/megantronn/my-wardrobe   (licence: GNU AGPL v3, see LICENSE)
+
 What it is
   A Y2K wardrobe computer. Everyone who opens the site gets their own private closet,
   saved inside their own browser. Nothing is uploaded: photos never leave the device.
+
+How to change the live site
+  1. Edit the files on your computer and try them locally (see "Open it on your computer").
+  2. Save a snapshot ("commit") and upload it ("push") to GitHub, e.g. in a terminal in this folder:
+       git add -A
+       git commit -m "Describe what you changed"
+       git push
+  3. Netlify notices the new upload and updates the live site by itself within a minute.
+  Never drag this folder onto Netlify's "upload files" box: that would upload private/ and images/clothes/.
 
 Files
   index.html             the page layout (boxes, buttons, panels)
@@ -25,7 +37,9 @@ Files
 
 Private: stays on this computer, never uploaded (listed in .gitignore)
   images/clothes/        your original clothing photos
-  private/               anything else you want kept off the internet
+  private/               anything else you want kept off the internet, including:
+    my-closet-starter.closet   your 56 original pieces: press RESTORE on the site and pick this file
+    full-history.bundle        the project's full step-by-step history (git clone it to look back)
 
 Open it on your computer
   In VS Code: right-click index.html and choose "Open with Live Server".
@@ -74,6 +88,6 @@ Background removal
   Photos are never uploaded: only the tool is downloaded.
 
 Backups
-  BACKUP saves the whole closet (pieces, tags, photos and saved looks) as one ".closet" file.
+  BACKUP saves the whole closet (pieces, tags, photos, saved looks, doll photo and lookbook) as one ".closet" file.
   RESTORE on any phone or computer brings it all back.
   A .closet file is really a zip file: rename a copy to .zip if you want to look inside.
